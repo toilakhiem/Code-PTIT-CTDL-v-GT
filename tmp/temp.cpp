@@ -1,4 +1,11 @@
--3 5 -10 8 -2
- 0 10 10 26 26 
-   5  15 23 25
-   5  -5 3  1
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    stack<int> stk;
+    string s;
+    while(cin >> s){
+        
+    }
+}
+

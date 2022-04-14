@@ -5,15 +5,15 @@ class Node{
     public:
         int data;
         Node *next;
-        
 };
 void InRaCacNode(node a)
 {
     while (a != NULL)
     {
-        cout << a->data;
+        cout << a->data << " ";
         a = a->next;
     }
+    cout << endl;
 }
 node makeNode(int x)
 {
@@ -67,6 +67,8 @@ void XoaOCuoi(node &a){
         truoc->next = NULL;
 }
 int main(){
-    node khiem = new Node();
+    node khiem = NULL;
+    ThemVaoCuoi(khiem, 1);
+    ThemVaoCuoi(khiem, 2);
     InRaCacNode(khiem);
 }

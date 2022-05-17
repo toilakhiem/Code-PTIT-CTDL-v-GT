@@ -19,3 +19,15 @@ int main(){
     while(x--)
         testcase();
 }
+2 3 4 6
+4 5 6 tong = 5
+6 9  tong = 14
+15   tong = 29
+
+var allowPaste = function(e){
+  e.stopImmediatePropagation();
+  return true;
+};
+document.addEventListener('paste', allowPaste, true);
+
+

@@ -1,44 +1,50 @@
 #include<bits/stdc++.h>
 using namespace std;
-int m, n, u;
+int n,m;
 bool used[1001];
+vector<pair<int,int>> edge;
 vector<int> v[1001];
-void dfs(int u){
-    stack<int> stk;
-    stk.push(u);
-    while(stk.size()){
-        int s = stk.top();
-        stk.pop();
-        if(!used[s]){
-            cout << s << " ";
-            used[s] = 1;
-        }
-        for (int i = v[s].size() - 1; i >= 0;i--)
-        {
-            if(!used[v[s][i]]){
-                stk.push(v[s][i]);
-            }
-        }
-    }
+void inp(){
+	cin>>n>>m;
+	for(int i=0;i<m;i++){
+		int x,y; cin>>x>>y;
+		edge.push_back({x,y});
+		v[x].push_back(y);
+		v[y].push_back(x);
+	}
 }
-
-void testcase(){
-    cin >> m >> n >> u;
-    for (int i = 1; i <= n;i++){
-        int x, y;
-        cin >> x >> y;
-        v[x].push_back(y);
-    }
-    memset(used, false, sizeof(used));
-    dfs(u);
-    for(int i=1;i<=m;i++){
-			v[i].clear();
+void dfs(int i,int s,int e){
+	used[i]=true;
+	for(auto x:v[i]){
+		// if((i==s && x==e) || (i==e && x==s)){
+		// 	continue;
+		// }
+		if(used[x]==false){
+			dfs(x,s,e);
 		}
-    cout << endl;
+	}
 }
 int main(){
-	int t; cin>>t; 
+	int t; cin>>t;
 	while(t--){
-        testcase();
-    }
+		inp();
+		for(int i=0;i<m;i++){
+			memset(used,false,sizeof(used));
+			dfs(1,edge[i].first,edge[i].second);
+			bool ok=false;
+			for(int i=1;i<=n;i++){
+				if(used[i]==false){
+					ok=true;
+				}
+			}
+			if(ok){
+				cout<<edge[i].first<<" "<<edge[i].second<<" ";
+			}
+		}
+		cout<<endl;
+		for(int i=1;i<=n;i++){
+			v[i].clear();
+		}
+		edge.clear();
+	}
 }

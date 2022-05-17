@@ -24,38 +24,29 @@ void dfs(int i,int s,int e){
 		}
 	}
 }
-int main(){
-	int t; cin>>t;
-	while(t--){
-		inp();
-		for(int i=0;i<m;i++){
-			memset(used,false,sizeof(used));
-			dfs(1,edge[i].first,edge[i].second);
-			bool ok=false;
-			for(int i=1;i<=n;i++){
-				if(used[i]==false){
-					ok=true;
-				}
-			}
-			if(ok){
-				cout<<edge[i].first<<" "<<edge[i].second<<" ";
+void testcase(){
+	inp();
+	for (int i = 0; i < m;i++){
+		memset(used, false, sizeof(used));
+		dfs(1, edge[i].first, edge[i].second);
+		bool ok=false;
+		for(int i=1;i<=n;i++){
+			if(used[i]==false){
+				ok=true;
 			}
 		}
-		cout<<endl;
+		if(ok){
+			cout<<edge[i].first<<" "<<edge[i].second<<" ";
+		}
+	}
+	cout<<endl;
 		for(int i=1;i<=n;i++){
 			v[i].clear();
 		}
 		edge.clear();
-	}
 }
-
-1 2 
-
-1 3
-
-2 3
-
-2 5
-
-3 4
-
+int main(){
+	int t; cin>>t;
+	while(t--)
+		testcase();
+}
